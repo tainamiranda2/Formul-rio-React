@@ -39,7 +39,7 @@ const FormContext = createContext<ContextType | undefined>(undefined);
 
 //reducer executar certas ações especificas
 
-enum FormActions {
+export enum FormActions {
   //nomes especificos
   setCurrentStep,
   setName,
@@ -72,7 +72,7 @@ const fomrReducer = (state: State, action: Action) => {
 
 //Provider é um ambiente para ter acesso aos dados
 
-const FormProvider=({children}: FormProviderProps) =>{
+export const FormProvider=({children}: FormProviderProps) =>{
 //reducer pelo react
   const [state, dispatch]=useReducer (fomrReducer, initialDate);
 
@@ -86,7 +86,7 @@ const FormProvider=({children}: FormProviderProps) =>{
 }
 
 //hook simplificaa o processo de acesso as informações e permite a troca dessas informações
-const UseForm=()=>{
+export const UseForm=()=>{
   const context = useContext(FormContext);
   if(context === undefined){
     throw new Error('UseForm precisa ser usado dentro do FormProvider')
