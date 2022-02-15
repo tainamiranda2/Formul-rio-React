@@ -26,3 +26,10 @@ export const Sidebar=styled.div `
 width: 250px;
 border-right: 1px solid #16195c;
 `;
+
+export const Page=styled.div`
+flex:1;
+padding-left: 40px;
+padding-top: 40px;
+
+`;

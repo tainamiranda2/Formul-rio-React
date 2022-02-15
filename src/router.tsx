@@ -13,7 +13,7 @@ export const Router = () =>{
     <>
   <BrowserRouter>
 
-  <Route path="/" exact  component={FormStep1}/>
+  <Route path="/" exact:true;  component={FormStep1}/>
   
 <Route path="/step2" component={FormStep2}/>
 
