@@ -1,5 +1,6 @@
-import React from 'react'
-import { createContext, useContext, useReducer, ReactNode } from 'react'
+import React from 'react';
+
+import { createContext, useContext, useReducer, ReactNode } from 'react';
 
 //types
 type State ={
@@ -21,6 +22,7 @@ type ContextType={
   dispatch: (action: Action) => void;
 
 }
+
 type FormProviderProps ={
   children: ReactNode;
 }
@@ -48,7 +50,7 @@ export enum FormActions {
   setGithub
 }
 
-const fomrReducer = (state: State, action: Action) => {
+const formReducer = (state: State, action: Action) => {
 
   switch (action.type) {
     case FormActions.setCurrentStep:
@@ -74,10 +76,9 @@ const fomrReducer = (state: State, action: Action) => {
 
 export const FormProvider=({children}: FormProviderProps) =>{
 //reducer pelo react
-  const [state, dispatch]=useReducer (fomrReducer, initialDate);
+  const [state, dispatch]=useReducer (formReducer, initialDate);
 
   const value = {state, dispatch}
-
 
   return (
     <FormContext.Provider value={value}>{children}</FormContext.Provider>
@@ -86,10 +87,10 @@ export const FormProvider=({children}: FormProviderProps) =>{
 }
 
 //hook simplificaa o processo de acesso as informações e permite a troca dessas informações
-export const UseForm=()=>{
+export const useForm=()=>{
   const context = useContext(FormContext);
   if(context === undefined){
-    throw new Error('UseForm precisa ser usado dentro do FormProvider')
+    throw new Error('useForm precisa ser usado dentro do FormProvider')
   }
   return context;
 }
